@@ -22,7 +22,8 @@ angular.module('app', [
   'app.controllers.Toolbar',
   'app.controllers.Setting',
   'app.controllers.Main',
-  'md.data.table'
+  'md.data.table',
+  'app.filters.ThaiDate'
 ])
   .run(function ($rootScope) {
 

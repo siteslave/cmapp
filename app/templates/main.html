@@ -38,7 +38,7 @@
         <tr md-row ng-repeat="c in customers"> 
           <td md-cell>{{ c.id }}</td>
           <td md-cell>{{ c.fullname }}</td>
-          <td md-cell>{{ c.birthdate }}</td>
+          <td md-cell>{{ c.birthdate | ThaiDate }}</td>
           <td md-cell>{{ c.address }}</td>
           <td md-cell>{{ c.email }}</td>
           <td md-cell>{{ c.telephone }}</td>
