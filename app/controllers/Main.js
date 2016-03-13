@@ -15,12 +15,40 @@ angular.module('app.controllers.Main', ['app.services.Main'])
       }
     });
 
-    MainService.getList(db)
-    .then(function (rows) {
-      console.log(rows)
+    $scope.query = {
+      limit: 3,
+      page: 1
+    };
+
+    $scope.onPaginate = function (page, limit) {
+      console.log(page, limit);
+      let offset = (page - 1) * limit;
+      $scope.getCustomers(limit, offset);
+    };
+
+    // Get total
+    MainService.getTotal(db)
+    .then(function (total) {
+      $scope.total = total;
     }, function (err) {
-      console.log(err)
-    })
+      console.log(err);
+    });
+
+    $scope.getCustomers = function (limit, offset) {
+      $scope.customers = [];
+      MainService.getList(db, limit ,offset)
+        .then(function (rows) {
+          $scope.customers = rows;
+        }, function (err) {
+          console.log(err)
+        });
+    };
+
+    let limit = $scope.query.limit;
+    let offset = ($scope.query.page - 1) * $scope.query.limit;
+
+    $scope.getCustomers(limit, offset);
+
 
 
   });

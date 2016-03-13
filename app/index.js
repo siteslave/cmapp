@@ -13,6 +13,7 @@ require('angular-animate');
 require('angular-aria');
 require('angular-messages');
 require('angular-material');
+require('angular-material-data-table');
 
 angular.module('app', [
   'ui.router',
@@ -20,7 +21,8 @@ angular.module('app', [
   'app.controllers.Nav',
   'app.controllers.Toolbar',
   'app.controllers.Setting',
-  'app.controllers.Main'
+  'app.controllers.Main',
+  'md.data.table'
 ])
   .run(function ($rootScope) {
 

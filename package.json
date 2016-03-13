@@ -10,6 +10,7 @@
     "angular-animate": "^1.5.0",
     "angular-aria": "^1.5.0",
     "angular-material": "^1.0.6",
+    "angular-material-data-table": "^0.9.14",
     "angular-messages": "^1.5.0",
     "angular-ui-router": "^0.2.18",
     "fs-extra": "^0.26.5",
