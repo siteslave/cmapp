@@ -15,7 +15,14 @@ require('angular-messages');
 require('angular-material');
 require('angular-material-data-table');
 
+
+let Highcharts = require('highcharts');
+
+require('./node_modules/highcharts-ng/dist/highcharts-ng.js');
+
+
 angular.module('app', [
+  'highcharts-ng',
   'ui.router',
   'ngMaterial',
   'app.controllers.Nav',
@@ -25,7 +32,8 @@ angular.module('app', [
   'md.data.table',
   'app.filters.ThaiDate',
   'app.controllers.New',
-  'app.controllers.Edit'
+  'app.controllers.Edit',
+  'app.controllers.Report'
 ])
   .run(function ($rootScope) {
 
@@ -89,7 +97,8 @@ angular.module('app', [
     })
     .state('report', {
       url: '/report',
-      templateUrl: './app/templates/report.html'
+      templateUrl: './app/templates/report.html',
+      controller: 'ReportCtrl'
     })
     .state('setting', {
       url: '/setting',

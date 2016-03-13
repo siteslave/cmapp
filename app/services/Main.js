@@ -56,6 +56,8 @@ angular.module('app.services.Main', [])
 
       getDetail(db, customerId) {
         let q = $q.defer();
+        //let sql = 'select * from customers where id=? limit 1';
+        //db.raw(sql, [customerId])
         db('customers')
           .select()
           .where('id', customerId)

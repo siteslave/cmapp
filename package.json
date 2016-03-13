@@ -14,6 +14,8 @@
     "angular-messages": "^1.5.0",
     "angular-ui-router": "^0.2.18",
     "fs-extra": "^0.26.5",
+    "highcharts": "^4.2.3",
+    "highcharts-ng": "0.0.11",
     "knex": "^0.10.0",
     "moment": "^2.12.0",
     "mysql": "^2.10.2"
