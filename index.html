@@ -21,6 +21,8 @@
   <script src="./app/controllers/Edit.js"></script>
   <script src="./app/controllers/Report.js"></script>
   <script src="./app/services/Report.js"></script>
+  <script src="./app/controllers/Login.js"></script>
+  <script src="./app/services/Login.js"></script>
 
 </head>
 <body>
@@ -34,8 +36,12 @@
       <span>โปรแกรมบริหารจัดการข้อมูลลูกค้า</span>
     </h2>
     <span flex></span>
-    <md-button class="md-icon-button" aria-label="Home" ng-click="logout()">
-      <i class="material-icons">dialpad</i>
+    <h2>
+      <span>{{ fullname }}</span>
+    </h2>
+    <md-button class="md-icon-button" aria-label="Home" ng-click="logout()"
+               ng-show="isLogged">
+      <i class="material-icons">input</i>
     </md-button>
   </div>
 </md-toolbar>

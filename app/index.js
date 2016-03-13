@@ -20,7 +20,6 @@ let Highcharts = require('highcharts');
 
 require('./node_modules/highcharts-ng/dist/highcharts-ng.js');
 
-
 angular.module('app', [
   'highcharts-ng',
   'ui.router',
@@ -33,7 +32,8 @@ angular.module('app', [
   'app.filters.ThaiDate',
   'app.controllers.New',
   'app.controllers.Edit',
-  'app.controllers.Report'
+  'app.controllers.Report',
+  'app.controllers.Login'
 ])
   .run(function ($rootScope) {
 
@@ -83,7 +83,8 @@ angular.module('app', [
     })
     .state('login', {
       url: '/login',
-      templateUrl: './app/templates/login.html'
+      templateUrl: './app/templates/login.html',
+      controller: 'LoginCtrl'
     })
     .state('new', {
       url: '/new',
