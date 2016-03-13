@@ -23,7 +23,8 @@ angular.module('app', [
   'app.controllers.Setting',
   'app.controllers.Main',
   'md.data.table',
-  'app.filters.ThaiDate'
+  'app.filters.ThaiDate',
+  'app.controllers.New'
 ])
   .run(function ($rootScope) {
 
@@ -77,7 +78,8 @@ angular.module('app', [
     })
     .state('new', {
       url: '/new',
-      templateUrl: './app/templates/new.html'
+      templateUrl: './app/templates/new.html',
+      controller: 'NewCtrl'
     })
     .state('report', {
       url: '/report',

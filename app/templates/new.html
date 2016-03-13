@@ -12,58 +12,60 @@
   </md-card-header>
   <md-card-content>
 
-    <div layout="row">
-      <div flex="40">
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>ชื่อ-สกุล</label>
-          <input ng-model="fullname" type="text">
-        </md-input-container>
-      </div>
-      <div flex>
-        <md-datepicker ng-model="birthdate" md-placeholder="วันเกิด">
-      </div>
-      <div flex>
-        <md-input-container class="md-block" >
-          <label>ประเภท</label>
-          <md-select ng-model="customerTypeId">
-            <md-option ng-repeat="t in types" value="{{t.id}}">
-              {{t.name}}
-            </md-option>
-          </md-select>
-        </md-input-container>
+    <form name="frmNew">
+      <div layout="row">
+        <div flex="40">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>ชื่อ-สกุล</label>
+            <input ng-model="fullname" type="text" ng-required="true">
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-datepicker ng-model="birthdate" md-placeholder="วันเกิด">
+        </div>
+        <div flex>
+          <md-input-container class="md-block" >
+            <label>ประเภท</label>
+            <md-select ng-model="customerTypeId" ng-required="true">
+              <md-option ng-repeat="t in types" value="{{t.id}}">
+                {{t.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+
       </div>
 
-    </div>
+      <div layout="row">
+        <div flex>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>ที่อยู่</label>
+            <input ng-model="address" type="text" ng-required="true">
+          </md-input-container>
+        </div>
+      </div>
 
-    <div layout="row">
-      <div flex>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>ที่อยู่</label>
-          <input ng-model="address" type="text">
-        </md-input-container>
+      <div layout="row">
+        <div flex>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>อีเมล์</label>
+            <input ng-model="email" type="text" ng-required="true">
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>โทรศัพท์</label>
+            <input ng-model="telephone" type="text" ng-required="true">
+          </md-input-container>
+        </div>
       </div>
-    </div>
 
-    <div layout="row">
-      <div flex>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>อีเมล์</label>
-          <input ng-model="email" type="text">
-        </md-input-container>
+      <div layout="row">
+        <div flex>
+          <md-button ng-disabled="frmNew.$invalid" class="md-primary md-raised" ng-click="save()">Save</md-button>
+        </div>
       </div>
-      <div flex>
-        <md-input-container class="md-block" flex-gt-sm>
-          <label>โทรศัพท์</label>
-          <input ng-model="telephone" type="text">
-        </md-input-container>
-      </div>
-    </div>
-
-    <div layout="row">
-      <div flex>
-        <md-button class="md-primary md-raised" ng-click="save()">Save</md-button>
-      </div>
-    </div>
+    </form>
 
   </md-card-content>
 </md-card>

@@ -38,6 +38,41 @@ angular.module('app.services.Main', [])
 
         return q.promise;
 
+      },
+
+      getCustomerTypes(db) {
+        let q = $q.defer();
+        db('customer_types')
+        .select()
+        .then(function (rows) {
+          q.resolve(rows)
+        })
+        .catch(function (err) {
+          q.reject(err)
+        });
+
+        return q.promise;
+      },
+
+      saveCustomer(db, customer) {
+        let q = $q.defer();
+        db('customers')
+          .insert({
+            fullname: customer.fullname,
+            birthdate: customer.birthdate,
+            address: customer.address,
+            telephone: customer.telephone,
+            email: customer.email,
+            customer_type_id: customer.customer_type_id
+          })
+          .then(function () {
+            q.resolve()
+          })
+          .catch(function (err) {
+            q.reject(err)
+          });
+
+        return q.promise;
       }
     }
   });
