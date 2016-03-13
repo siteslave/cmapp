@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.Setting', [])
-.controller('SettingCtrl', function ($scope, $rootScope) {
+.controller('SettingCtrl', function ($scope, $rootScope, $mdDialog) {
 
   //console.log($rootScope.configFile);
 
@@ -11,9 +11,27 @@ angular.module('app.controllers.Setting', [])
   $scope.save = function () {
     fse.writeJson($rootScope.configFile, $scope.config, function (err) {
       if (err) {
-        alert('Error: ' + JSON.stringify(err))
+        $mdDialog.show(
+          $mdDialog.alert()
+            .parent(angular.element(document.querySelector('body')))
+            .clickOutsideToClose(true)
+            .title('เกิดข้อผิดพลาด')
+            .textContent('Error: ' + JSON.stringify(err))
+            .ariaLabel('alert')
+            .ok('ตกลง')
+        );
       } else {
-        alert('Success')
+
+        $mdDialog.show(
+          $mdDialog.alert()
+            .parent(angular.element(document.querySelector('body')))
+            .clickOutsideToClose(true)
+            .title('ผลการบันทึก')
+            .textContent('บันทึกเสร็จเรียบร้อย')
+            .ariaLabel('alert')
+            .ok('ตกลง')
+        );
+
       }
     })
   }

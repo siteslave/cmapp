@@ -19,7 +19,8 @@ angular.module('app', [
   'ngMaterial',
   'app.controllers.Nav',
   'app.controllers.Toolbar',
-  'app.controllers.Setting'
+  'app.controllers.Setting',
+  'app.controllers.Main'
 ])
   .run(function ($rootScope) {
 
@@ -64,7 +65,8 @@ angular.module('app', [
     $stateProvider
     .state('main', {
       url: '/',
-      templateUrl: './app/templates/main.html'
+      templateUrl: './app/templates/main.html',
+      controller: 'MainCtrl'
     })
     .state('login', {
       url: '/login',

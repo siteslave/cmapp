@@ -12,6 +12,8 @@
     "angular-material": "^1.0.6",
     "angular-messages": "^1.5.0",
     "angular-ui-router": "^0.2.18",
-    "fs-extra": "^0.26.5"
+    "fs-extra": "^0.26.5",
+    "knex": "^0.10.0",
+    "mysql": "^2.10.2"
   }
 }
