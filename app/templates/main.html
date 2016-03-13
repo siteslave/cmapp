@@ -12,6 +12,8 @@
   </md-card-header>
   <md-card-content>
 
+    <md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
+
     <md-table-container> 
       <table md-table ng-model="selected" md-progress="promise"> 
         <thead md-head> 

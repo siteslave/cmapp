@@ -35,12 +35,16 @@ angular.module('app.controllers.Main', ['app.services.Main'])
     });
 
     $scope.getCustomers = function (limit, offset) {
+      $scope.isLoading = true;
+
       $scope.customers = [];
       MainService.getList(db, limit ,offset)
         .then(function (rows) {
           $scope.customers = rows;
+          $scope.isLoading = false;
         }, function (err) {
-          console.log(err)
+          console.log(err);
+          $scope.isLoading = false;
         });
     };
 
