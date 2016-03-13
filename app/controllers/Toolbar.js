@@ -7,12 +7,16 @@ angular.module('app.controllers.Toolbar', [])
       .toggle();
   };
 
-  $rootScope.fullname = 'Guest';
+  $rootScope.admin_name = 'Guest';
   $rootScope.isLogged = false;
 
   $scope.logout = function () {
     $window.sessionStorage.removeItem('username');
-    $window.sessionStorage.removeItem('fullname');
+    $window.sessionStorage.removeItem('admin_name');
+
+    $rootScope.admin_name = 'Guest';
+    $rootScope.isLogged = false;
+
     $state.go('login');
   }
 

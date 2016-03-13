@@ -13,7 +13,12 @@
   <md-card-content>
 
     <md-progress-linear md-mode="indeterminate" ng-show="isLoading"></md-progress-linear>
-
+    <div layout="row">
+      <div flex="90"></div>
+      <div>
+        <md-button class="md-primary md-raised" ng-click="excelExport()">Export to Excel</md-button>
+      </div>
+    </div>
     <md-table-container> 
       <table md-table ng-model="selected" md-progress="promise"> 
         <thead md-head> 

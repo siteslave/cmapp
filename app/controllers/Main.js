@@ -7,7 +7,37 @@ angular.module('app.controllers.Main', ['app.services.Main'])
       $state.go('login');
     } else {
 
+      $scope.excelExport = function () {
+        let remote = require('electron').remote;
+        let app = remote.app;
+
+        let tmpPath = app.getPath('temp');
+
+        console.log(tmpPath);
+
+        let moment = require('moment');
+        let exportFile = path.join(tmpPath, moment().format('x') + '.xlsx');
+
+        let json2xls = require('json2xls');
+        let open = require('open');
+
+        let _customers = [];
+        $scope.customers.forEach(function (v) {
+          let obj = {};
+          obj.fullname = v.fullname;
+          obj.birthdate = moment(v.birthdate).format('YYYY-MM-DD');
+          _customers.push(obj);
+        });
+
+        let xls = json2xls(_customers);
+
+        fs.writeFileSync(exportFile, xls, 'binary');
+        open(exportFile);
+
+      };
+
       let config = fse.readJsonSync($rootScope.configFile);
+
       let db = require('knex')({
         client: 'mysql',
         connection: {

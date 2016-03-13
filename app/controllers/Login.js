@@ -29,7 +29,7 @@ angular.module('app.controllers.Login', ['app.services.Login'])
 
           $window.sessionStorage.setItem('username', user.username);
           $window.sessionStorage.setItem('fullname', user.fullname);
-          $rootScope.fullname = user.fullname;
+          $rootScope.admin_name = user.fullname;
           $rootScope.isLogged = true;
 
           //$rootScope.$digest();
