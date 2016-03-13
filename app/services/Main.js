@@ -54,6 +54,22 @@ angular.module('app.services.Main', [])
         return q.promise;
       },
 
+      getDetail(db, customerId) {
+        let q = $q.defer();
+        db('customers')
+          .select()
+          .where('id', customerId)
+          .limit(1)
+          .then(function (rows) {
+            q.resolve(rows[0])
+          })
+          .catch(function (err) {
+            q.reject(err)
+          });
+
+        return q.promise;
+      },
+
       saveCustomer(db, customer) {
         let q = $q.defer();
         db('customers')
@@ -71,6 +87,43 @@ angular.module('app.services.Main', [])
           .catch(function (err) {
             q.reject(err)
           });
+
+        return q.promise;
+      },
+
+      updateCustomer(db, customer) {
+        let q = $q.defer();
+        db('customers')
+          .update({
+            fullname: customer.fullname,
+            birthdate: customer.birthdate,
+            address: customer.address,
+            telephone: customer.telephone,
+            email: customer.email,
+            customer_type_id: customer.customer_type_id
+          })
+          .where('id', customer.id)
+          .then(function () {
+            q.resolve()
+          })
+          .catch(function (err) {
+            q.reject(err)
+          });
+
+        return q.promise;
+      },
+
+      removeCustomer(db, customerId) {
+        let q = $q.defer();
+        db('customers')
+        .where('id', customerId)
+        .del()
+        .then(function () {
+          q.resolve()
+        })
+        .catch(function (err) {
+          q.reject(err)
+        });
 
         return q.promise;
       }

@@ -44,7 +44,14 @@
           <td md-cell>{{ c.address }}</td>
           <td md-cell>{{ c.email }}</td>
           <td md-cell>{{ c.telephone }}</td>
-          <td md-cell></td>
+          <td md-cell>
+            <md-button class="md-icon-button" aria-label="More" ng-click="remove(c.id)">
+              <md-icon class="material-icons">delete_sweep</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="More" ng-click="edit(c.id)">
+              <md-icon class="material-icons">create</md-icon>
+            </md-button>
+          </td>
         </tr>
          
         </tbody>

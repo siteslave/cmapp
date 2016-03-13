@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.controllers.Main', ['app.services.Main'])
-  .controller('MainCtrl', function ($scope, $rootScope, MainService) {
+  .controller('MainCtrl', function ($scope, $rootScope, $state, $mdDialog, MainService) {
 
     let config = fse.readJsonSync($rootScope.configFile);
     let db = require('knex')({
@@ -48,11 +48,42 @@ angular.module('app.controllers.Main', ['app.services.Main'])
         });
     };
 
-    let limit = $scope.query.limit;
-    let offset = ($scope.query.page - 1) * $scope.query.limit;
+    $scope.initialCustomer = function () {
+      let limit = $scope.query.limit;
+      let offset = ($scope.query.page - 1) * $scope.query.limit;
 
-    $scope.getCustomers(limit, offset);
+      $scope.getCustomers(limit, offset);
+    };
+
+    // initial customer
+    $scope.initialCustomer();
 
 
+    $scope.remove = function (customerId) {
+      // confirm
+      var confirm = $mdDialog.confirm()
+        .title('Are you sure?')
+        .textContent('คุณต้องการลบข้อมูลลูกค้าใช่หรือไม่?')
+        .ariaLabel('confirm')
+        .ok('ใช่, ฉันต้องการลบ')
+        .cancel('ไม่ใช่');
+      $mdDialog.show(confirm).then(function() {
+        // ok
+        MainService.removeCustomer(db, customerId)
+        .then(function () {
+          // success
+          $scope.initialCustomer();
+
+        }, function (err) {
+          // error
+          alert(JSON.stringify(err));
+          console.log(err);
+        })
+      });
+    };
+
+    $scope.edit = function (customerId) {
+      $state.go('edit', {id: customerId});
+    }
 
   });
